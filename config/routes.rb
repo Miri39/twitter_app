@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root 'application#helloblabla'
   get 'alta_ruta', to: 'application#alta_ruta'
   # post 'alta_ruta', to ....
-  
+
+  get 'create_user', to: 'application#create_user' 
 end
