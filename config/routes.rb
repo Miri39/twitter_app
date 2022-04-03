@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root 'application#helloblabla'
+  root 'application#home'
   get 'alta_ruta', to: 'application#alta_ruta'
   # post 'alta_ruta', to ....
 
