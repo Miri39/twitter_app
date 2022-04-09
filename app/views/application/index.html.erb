@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<ul>
+    <%@user.each do |user| %>
+        <li style = "border-bottom : 1px solid black">
+        name: <%= user.name%><br>
+        email: <%= user.email%><br>
+        age: <%= user.age%><br>
+        gender: <%= user.gender%><br>
+        </li>
+    <%end%>
+</ul>
+
