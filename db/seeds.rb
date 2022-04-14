@@ -9,30 +9,35 @@ User.create(
     name: "John",
     email: "gmail.com",
     age: 22,
-    gender: "Male"
+    gender: "Male",
+    phone_number: "0753552563"
 )
 
 User.create(
     name: "Alexandra",
     email: "cevagmail.com",
     age: 25,
-    gender: "Female"
+    gender: "Female",
+    phone_number: "0748144754"
 )
 User.create(
     name: "Mike",
     email: "altcevagmail.com",
     age: 18,
-    gender: "Male"
+    gender: "Male",
+    phone_number: "0784387653"
 )
 User.create(
     name: "Ioana",
     email: "Anagmail.com",
     age: 19,
-    gender: "Female"
+    gender: "Female",
+    phone_number: "0769958927"
 )
 User.create(
     name: "Andrei",
     email: "whatgmail.com",
     age: 17,
-    gender: "Other"
+    gender: "Other",
+    phone_number: "0786224488"
 )
