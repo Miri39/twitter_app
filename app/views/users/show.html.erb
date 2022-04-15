@@ -1,0 +1,9 @@
+<div>
+  <%= link_to('Back to users', '/users') %>
+</div>
+
+<% if @user.nil? %>
+    Nu exista userul cerut.
+<% else %>
+    <%= render @user %>
+<% end %>

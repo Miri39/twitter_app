@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 # gem "sassc-rails"
+gem "sassc-rails"
 
 gem "debug"
 
@@ -72,3 +73,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem 'bootstrap', '~> 5.1.3'
