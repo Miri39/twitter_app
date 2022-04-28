@@ -1,5 +1,9 @@
 <h1> Users </h1>
-
+<% if flash[:invalidUser] %>
+    <div class="alert alert-warning" role="alert">
+        <%= flash[:invalidUser] %>
+    </div>
+<% end %>
 <ul>
     <% @users.each do |user| %>
         <li>

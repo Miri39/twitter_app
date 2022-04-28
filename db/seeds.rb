@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 User.create(
     name: "John",
-    email: "gmail.com",
+    email: "john@gmail.com",
     age: 22,
     gender: "Male",
     phone_number: "0753552563"
@@ -15,28 +15,28 @@ User.create(
 
 User.create(
     name: "Alexandra",
-    email: "cevagmail.com",
+    email: "ceva@gmail.com",
     age: 25,
     gender: "Female",
     phone_number: "0748144754"
 )
 User.create(
     name: "Mike",
-    email: "altcevagmail.com",
+    email: "altceva@gmail.com",
     age: 18,
     gender: "Male",
     phone_number: "0784387653"
 )
 User.create(
     name: "Ioana",
-    email: "Anagmail.com",
+    email: "Ana@gmail.com",
     age: 19,
     gender: "Female",
     phone_number: "0769958927"
 )
 User.create(
     name: "Andrei",
-    email: "whatgmail.com",
+    email: "what@gmail.com",
     age: 17,
     gender: "Other",
     phone_number: "0786224488"

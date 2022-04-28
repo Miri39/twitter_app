@@ -1,9 +1,18 @@
-<div>
-  <%= link_to('Back to users', '/users') %>
-</div>
+<% if flash[:success] %>
+<br/>
+  <div class="alert alert-success" role="alert">
+        <%= flash[:success] %>
+    </div>
+<% end %>
+
+<br/>
 
 <% if @user.nil? %>
     Nu exista userul cerut.
 <% else %>
     <%= render @user %>
 <% end %>
+
+<div>
+  <%= link_to('Back to users', '/users') %>
+</div>

@@ -11,9 +11,13 @@
 
   <body>
   <nav>
-    <%= link_to 'Twitter', '/', class: 'navlink' %> | <%= link_to 'Users', '/users', class: 'navlink'%> |
-    <%= link_to 'Contact', '/contact', class: 'navlink'%> 
+    <%= link_to 'Twitter', '/', class: 'navlink' %> 
+    | <%= link_to 'Users', '/users', class: 'navlink' %> 
+    | <%= link_to 'Contact', '/contact', class: 'navlink' %>
+    | <%= link_to 'Sign up', '/sign_up', class: 'navlink' %>  
   </nav>
+  <div class = "container">
     <%= yield %>
+  </div>
   </body>
 </html>

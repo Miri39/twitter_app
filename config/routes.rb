@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # post 'alta_ruta', to ....
 
   get 'create_user', to: 'application#create_user' 
+  get 'sign_up', to: 'application#sign_up'
 
   get 'users', to: 'users#index'
   get 'users/new', to: 'users#new'
