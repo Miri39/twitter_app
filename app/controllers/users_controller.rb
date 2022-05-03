@@ -3,7 +3,13 @@ class UsersController < ApplicationController
         # o variabila fara @ este vizibila doar in functie
         # o variabila cu @ este vizibila si in afara functiei
         @users = User.all
-        @deleteUser = User.delete(User.where(id: params[:id]).first)
+    end
+
+    def destroy
+      @users = User.find(params[:id])
+      @users.destroy
+      flash[:deleted] = "The user was successfully deleted."
+      redirect_to "/users"
     end
 
     def show
