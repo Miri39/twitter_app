@@ -4,10 +4,16 @@
         <%= flash[:invalidUser] %>
     </div>
 <% end %>
+<% if flash[:userDeleted] %>
+    <div class="alert alert-success" role="alert">
+        <%= flash[:userDeleted] %>
+    </div>
+<% end %>
 <ul>
     <% @users.each do |user| %>
         <li>
             <%= render user %>
         </li>
     <% end %>
+    <%= link_to "Create", "users/new", class: "btn btn-secondary " %>
 </ul>
