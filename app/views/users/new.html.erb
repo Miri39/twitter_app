@@ -5,8 +5,14 @@
     </div>
 <% end %>
 <br/>
+<% @user.errors.full_messages.each do |error| %>
+  <div>
+    <%= error %>
+  </div>
+  <% end %>
 <%= form_for @user do |f| %>
   <%= f.text_field :name, class: "form-control" , placeholder: "Name" %> <br />
+  <%= f.password_field :password, class: "form-control" , placeholder: "Password" %> <br />
   <%= f.text_field :email, class: "form-control",placeholder: "Email" %> <br />
   <%= f.number_field :age, class: "form-control", placeholder: "Age" %> <br />
   <%= f.text_field :gender, class: "form-control", placeholder: "Gender" %> <br />
