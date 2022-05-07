@@ -31,7 +31,8 @@ class UsersController < ApplicationController
       
       if @user.save
         flash[:success] = 'Successfully created a new user'
-        redirect_to "/users/#{@user.id}"
+        # redirect_to "/users/#{@user.id}"
+        redirect_to user_path(@user)
       else
         # flash[:error] = 'Validations failed'
         # redirect_to '/users/new'

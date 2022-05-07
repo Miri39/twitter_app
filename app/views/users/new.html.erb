@@ -10,13 +10,43 @@
     <%= error %>
   </div>
   <% end %>
-<%= form_for @user do |f| %>
-  <%= f.text_field :name, class: "form-control" , placeholder: "Name" %> <br />
-  <%= f.password_field :password, class: "form-control" , placeholder: "Password" %> <br />
-  <%= f.text_field :email, class: "form-control",placeholder: "Email" %> <br />
-  <%= f.number_field :age, class: "form-control", placeholder: "Age" %> <br />
-  <%= f.text_field :gender, class: "form-control", placeholder: "Gender" %> <br />
-  <%= f.telephone_field :phone_number, class: "form-control", placeholder: "Phone" %> <br />
-  <%= f.submit class: "btn btn-primary "%>
-  <%= link_to "Back", "/users", class: "btn btn-secondary" %>
-<% end %>
+
+  <div class="row justify-content-center">
+  <div class="col-xs-12 col-sm-5">
+    <% if @user.errors.present? %>
+      <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |error| %>
+          <div>
+            <%= error %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= form_for @user do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %><br />
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %><br />
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %><br />
+
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %><br />
+
+      <%= f.label :gender %>
+      <%= f.text_field :gender, class: 'form-control' %><br />
+
+      <%= f.label :age %>
+      <%= f.text_field :age, class: 'form-control' %><br />
+
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: 'form-control' %><br />
+
+      <%= f.submit class: "btn btn-primary "%>
+      <%= link_to "Back", "/users", class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+</div>
+
