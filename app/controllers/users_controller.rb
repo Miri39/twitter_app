@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_action :check_user, only: [ :index, :show ]
+
     def index
         # o variabila fara @ este vizibila doar in functie
         # o variabila cu @ este vizibila si in afara functiei
         @users = User.all
     end
-
     def destroy
       @user = User.find(params[:id])
       @user.destroy
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
       if @user.save
         flash[:success] = 'Successfully created a new user'
         # redirect_to "/users/#{@user.id}"
+        log_in(@user)
         redirect_to user_path(@user)
       else
         # flash[:error] = 'Validations failed'
@@ -45,4 +47,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :age, :gender, :phone_number)
     end
+
+    def check_user
+      if !logged_in?
+        redirect_to login_path
+    end
   end
+end

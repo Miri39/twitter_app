@@ -10,12 +10,37 @@
   </head>
 
   <body>
-  <nav>
-    <%= link_to 'Twitter', '/', class: 'navlink' %> 
-    | <%= link_to 'Users', '/users', class: 'navlink' %> 
-    | <%= link_to 'Contact', '/contact', class: 'navlink' %>
-    | <%= link_to 'Sign up', '/users/new', class: 'navlink' %>  
-  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Twitter</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Users', '/users', class: 'nav-link' %>
+            </li>
+          </ul>
+
+          <% if logged_in? %>
+
+          <div class="d-flex pull right">
+            <div>
+              <%= link_to 'Logout', '/logout', method: :post, class: 'nav-link' %> 
+            </div>
+            <div>
+            <%= link_to current_user.name, "/users/#{current_user.id}", method: :post, class: 'nav-link' %> 
+            </div>
+          </div>
+          <% else %>
+            <%= link_to 'Sign up', new_user_path , method: :post, class: 'nav-link' %> 
+            <%= link_to 'Log in', login_path, method: :post, class: 'nav-link' %> 
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
   <div class = "container">
     <%= yield %>
   </div>
