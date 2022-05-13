@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_user, only: [ :index, :show ]
+  before_action :check_user, only: [ :index, :show, :destroy ]
+  before_action :admin_user, only: [ :destroy ]
 
     def index
         # o variabila fara @ este vizibila doar in functie
@@ -51,6 +52,9 @@ class UsersController < ApplicationController
     def check_user
       if !logged_in?
         redirect_to login_path
+      end
     end
-  end
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end 
 end

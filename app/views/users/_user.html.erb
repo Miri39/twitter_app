@@ -5,8 +5,11 @@
     age: <%= user.age%><br>
     gender: <%= user.gender%><br>
     phone_number <%= user.phone_number%><br></p>
-    <%= button_to "Delete", {:controller => :users,
-      :action => 'destroy', :id => user.id }, :method => :delete, :class => "btn btn-danger deleteButton"%>
+    <% button_to "Delete", {:controller => :users,
+      :action => 'destroy', :id => user.id }, :method => :delete, :class => 'btn btn-danger deleteButton' %>
+    <% if logged_in? && current_user.admin? && !current_user?(user) %>
+      <%= button_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger deleteButton' %>
+    <% end %>
   </div>
 </div>
 

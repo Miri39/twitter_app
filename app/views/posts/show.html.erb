@@ -1,0 +1,9 @@
+<div>
+  <%= link_to('Back to posts', '/posts') %>
+</div>
+
+<% if @post.nil? %>
+    Nu exista postarea ceruta.
+<% else %>
+    <%= render @post %>
+<% end %>

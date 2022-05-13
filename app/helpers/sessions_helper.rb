@@ -10,9 +10,13 @@ module SessionsHelper
             User.find_by(id: session[:user_id])
         end
     end
-
+    
     def log_out
         session[:user_id] = nil
+    end
+
+    def current_user?(user)
+        current_user == user
     end
 
     def logged_in?

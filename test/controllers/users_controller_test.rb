@@ -42,7 +42,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'users from non-logged user' do
-    post users_path, params: { user: { name: 'George', password: '123', email: 'george@ceva.com' } }
+    get users_path
     assert_response :redirect
+    get login_path
+    assert_response :success
   end
 end
