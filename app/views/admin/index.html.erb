@@ -1,0 +1,21 @@
+<% if flash[:userDeleted] %>
+    <div class="alert alert-success" role="alert">
+        <%= flash[:userDeleted] %>
+    </div>
+<% end %>
+<% if flash[:updatedStatus] %>
+    <div class="alert alert-success" role="alert">
+        <%= flash[:updatedStatus] %>
+    </div>
+<% end %>
+
+There are <%= @users.count %> users.
+<br>
+And there are <%= @users.where(admin: true).count %> admins.
+<ul>
+    <% @users.each do |user| %>
+        <li>
+            <%= render partial: "user", locals: {user: user} %>
+        </li>
+    <% end %>
+</ul>

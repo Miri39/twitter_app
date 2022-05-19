@@ -66,6 +66,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+gem "jquery-rails"
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]

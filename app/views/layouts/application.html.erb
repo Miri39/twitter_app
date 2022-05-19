@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
@@ -20,11 +21,15 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <%= link_to 'Users', '/users', class: 'nav-link' %>
-              
             </li>
             <li>
               <%= link_to "Posts", "/posts", class: "nav-link"%>
             </li>
+            <% if logged_in? && current_user.admin == true %>
+            <li>
+              <%= link_to "Statistics", "/admin/statistics", class: "nav-link"%>
+            </li>
+            <% end %>
           </ul>
 
           <% if logged_in? %>
@@ -32,7 +37,7 @@
           <div class="d-flex pull right">
             <div>
               <% link_to 'Logout', '/logout', method: :post, class: 'nav-link btn btn-link' %>
-              <%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link' %> 
+              <%= link_to 'Logout', logout_path, data:{turbo_method: :delete}, class: 'nav-link btn btn-link' %>
             </div>
             <div>
             <%= link_to current_user.name, "/users/#{current_user.id}", method: :post, class: 'nav-link' %> 

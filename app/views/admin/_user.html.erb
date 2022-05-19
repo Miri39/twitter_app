@@ -4,11 +4,18 @@
     <p class="card-text">email: <%= user.email%><br>
     age: <%= user.age%><br>
     gender: <%= user.gender%><br>
-    phone_number <%= user.phone_number%><br></p>
+    phone_number: <%= user.phone_number%><br>
+    id: <%= user.id %> <br></p>
     <% button_to "Delete", {:controller => :users,
       :action => 'destroy', :id => user.id }, :method => :delete, :class => 'btn btn-danger deleteButton' %>
-    <% if logged_in? && current_user.admin? && !current_user?(user)  && user.name[0] == 'A'%>
+    <% if logged_in? && current_user.admin? && !current_user?(user)%>
       <%= link_to 'Delete', user, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-danger deleteButton' %>
+      <%= button_to "Toggle Admin", {:controller => :admin,
+      :action => 'toggleAdmin', :id => user.id }, :method => :update, :class => "btn #{if(user.admin)
+            "btn-primary"    
+        else
+            "btn-secondary"
+        end}" %>
     <% end %>
   </div>
 </div>

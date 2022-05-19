@@ -14,8 +14,14 @@ class UsersController < ApplicationController
       redirect_to users_url
     end
 
+    def toggleAdmin
+      @user = User.where(id: params[:id]).first
+      @user.admin = !@user.admin
+    end
+
     def show
       @user = User.where(id: params[:id]).first
+      @posts = @user.posts.paginate(page: params[:page], per_page: 5)
       if @user.nil?
         flash[:invalidUser] = "This user doesn't exist"
         redirect_to "/users"

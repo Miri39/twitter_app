@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # post 'alta_ruta', to ....
 
   get 'create_user', to: 'application#create_user' 
-  
   resources :users
   resources :posts
   # get 'sign_up', to: 'users#new'
@@ -17,6 +16,9 @@ Rails.application.routes.draw do
   # get 'users/:id', to: 'users#show'
   # post 'users', to:'users#create'
   # delete 'users/:id', to: 'users#destroy'
+
+  get 'admin/statistics', to: 'admin#index' 
+  post 'toggleAdmin/:id', to: 'admin#toggleAdmin'
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

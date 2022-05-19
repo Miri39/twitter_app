@@ -41,10 +41,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'users from non-logged user' do
-    get users_path
-    assert_response :redirect
-    get login_path
-    assert_response :success
-  end
+  # test 'users from non-logged user' do
+  #   get users_path
+  #   assert_response :redirect
+  #   get login_path
+  #   assert_response :success
+  # end
 end

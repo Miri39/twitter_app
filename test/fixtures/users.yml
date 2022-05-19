@@ -4,8 +4,20 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+mike: 
+  name: Mike
+  email: mike@gmail.com
+  age: 18
+  gender: male
+  phone_number: "0753552563"
+  admin: true
 # column: value
 #
 two: {}
 # column: value
+
+# validates :name, :email, :age, :gender, :phone_number, presence: true
+#     validates :email, format: {with: /\A[\w.+-]+@\w+\.\w+\z/}
+#     validates :age, comparison: {greater_than: 0, less_than: 100}
+#     validates :gender, inclusion: {in: %w(male female other Male Female Other)}
+#     validates :phone_number, length: { maximum: 15 }
