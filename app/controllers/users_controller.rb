@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :check_user, only: [ :index, :show, :destroy ]
   before_action :admin_user, only: [ :destroy ]
-
+  before_action :check_delete_user, only: [ :destroy ]
     def index
         # o variabila fara @ este vizibila doar in functie
         # o variabila cu @ este vizibila si in afara functiei
@@ -14,15 +14,12 @@ class UsersController < ApplicationController
       redirect_to users_url
     end
 
-    def toggleAdmin
-      @user = User.where(id: params[:id]).first
-      @user.admin = !@user.admin
-    end
-
     def show
       @user = User.where(id: params[:id]).first
-      @posts = @user.posts.paginate(page: params[:page], per_page: 5)
-      if @user.nil?
+      if @user.present?
+        @posts = @user.posts.paginate(page: params[:page], per_page: 5)
+        @post = Post.new
+      else
         flash[:invalidUser] = "This user doesn't exist"
         redirect_to "/users"
       end
@@ -51,16 +48,13 @@ class UsersController < ApplicationController
     
     private
     
+    def check_delete_user
+      user = User.find(params[:id])
+      if user.name[0] != 'A'
+        redirect_to users_path
+      end
+    end
     def user_params
       params.require(:user).permit(:name, :email, :password, :age, :gender, :phone_number)
     end
-
-    def check_user
-      if !logged_in?
-        redirect_to login_path
-      end
-    end
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end 
 end

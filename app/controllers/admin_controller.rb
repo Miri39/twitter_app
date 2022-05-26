@@ -4,14 +4,14 @@ class AdminController < ApplicationController
 
 
     def index
-        @users = User.all;
+        @users = User.all
     end
     
     def toggleAdmin
         @user = User.where(id: params[:id]).first
         @user.admin = !@user.admin
         @user.save
-        status = if(@user.admin)
+        status = if @user.admin
                     "admin"
                 else
                     "non-admin"
