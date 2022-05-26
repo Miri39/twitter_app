@@ -1,0 +1,4 @@
+<div class= "col-md-6">
+    <%= render @posts%>
+    <%= will_paginate(@posts, :renderer =>  WillPaginate::ActionView::BootstrapLinkRenderer, class: "pagination bg-transparent") %>
+</div>

@@ -1,14 +1,7 @@
 <h1>Edit Post</h1>
 
 <%= render partial: 'shared/error_messages', locals: { obj: @post } %>
-<%= form_with model: @post do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control', placeholder: 'Insert title...' %>
-  <%= f.label :description %>
-  <%= f.text_field :description, class: 'form-control', placeholder: 'Insert content...' %>
-  <%= f.submit 'Edit', class: 'btn btn-primary mt-2' %>
-<% end %>
-
+<%= render partial: 'shared/update_post', locals: {text: "Edit"} %>
 
 
 

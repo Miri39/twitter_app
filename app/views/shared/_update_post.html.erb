@@ -1,0 +1,7 @@
+<%= form_with model: @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control', placeholder: 'Insert title...' %>
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control', placeholder: 'Insert content...' %>
+  <%= f.submit text, class: 'btn btn-primary mt-2' %>
+<% end %>

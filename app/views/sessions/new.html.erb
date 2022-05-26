@@ -1,8 +1,6 @@
 <div class="row justify-content-center">
   <div class="col-xs-12 col-sm-5">
-    <% if flash[:error] %>
-      <div class="alert alert-danger"><%= flash[:error] %></div>
-    <% end %>
+      <%= render partial: 'shared/error_messages', locals: { obj: User.new } %>
     <%= form_with url: login_path do |f| %>
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %><br />

@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all
+        @posts = @posts.paginate(page: params[:page], per_page: 5)
     end
 
     def show
@@ -16,19 +17,24 @@ class PostsController < ApplicationController
 
     
     def create
-      @post = Post.new(post_params)
-      @post.user_id = current_user.id
+      puts current_user.id
+      @post = current_user.posts.new(post_params)
       if @post.save
         redirect_to user_path(current_user)
       else
         @user = current_user
         @posts = @user.posts.paginate(page: params[:page], per_page: 5)
         render 'users/show', status: 422
+        
       end
     end
     
     def edit
-      @post = Post.find(params[:id]) 
+      if logged_in? &&  Post.find(params[:id]).user_id == current_user.id
+        @post = Post.find(params[:id])
+      else
+        redirect_to users_path 
+      end
     end
 
     def update

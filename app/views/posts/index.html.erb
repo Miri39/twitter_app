@@ -1,9 +1,5 @@
-<h1> Post </h1>
+<h1> Posts </h1>
 
-<ul>
-    <% @posts.each do |post| %>
-        <li>
-            <%= render post %>
-        </li>
-    <% end %>
-</ul>
+<%= render partial: 'shared/update_post', locals: { text: "Post" } %>
+<br/>
+<%= render partial: 'shared/paginated_posts'%>
