@@ -1,5 +1,6 @@
 <h1> Posts </h1>
-
+<% if logged_in? %>
 <%= render partial: 'shared/update_post', locals: { text: "Post" } %>
+<% end %>
 <br/>
 <%= render partial: 'shared/paginated_posts'%>

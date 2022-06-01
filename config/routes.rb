@@ -8,15 +8,23 @@ Rails.application.routes.draw do
   # post 'alta_ruta', to ....
 
   get 'create_user', to: 'application#create_user' 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :posts
+  resources :comms 
+  resources :replies
+  post 'posts/:id/comm', to: 'comms#create'
+  get 'posts/:id/:comm_id', to: 'replies#index'
+  post 'posts/:id/:comm_id', to: 'replies#create'
   # get 'sign_up', to: 'users#new'
   # get 'users', to: 'users#index'
   # get 'users/new', to: 'users#new'
   # get 'users/:id', to: 'users#show'
   # post 'users', to:'users#create'
   # delete 'users/:id', to: 'users#destroy'
-
   get 'admin/statistics', to: 'admin#index' 
   post 'toggleAdmin/:id', to: 'admin#toggleAdmin'
 
@@ -24,4 +32,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
+  # get 'users/:id/following', to:'users#following'
+  # get 'users/:id/followers', to:'users#followers'
+
 end

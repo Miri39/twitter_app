@@ -1,0 +1,17 @@
+<%= render partial: 'shared/comments', locals: {comm: @comm} %>
+
+<% if logged_in? %>
+    <%= form_with model: @reply do |f| %>
+        <%= f.label :text %>
+        <%= f.text_field :text, class: 'form-control', placeholder: 'Reply...' %>
+        <%= f.submit 'Reply', class: 'btn btn-primary mt-2' %>
+    <% end %> 
+<% end %>
+
+<ul>
+    <% @replies.each do |reply| %>
+        <li>
+            <%= render partial: 'shared/replies', locals: { reply: reply } %>
+        </li>
+    <% end %>
+</ul>

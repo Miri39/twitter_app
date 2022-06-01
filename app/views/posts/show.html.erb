@@ -6,4 +6,19 @@
     Nu exista postarea ceruta.
 <% else %>
     <%= render @post %>
+    <% if logged_in? %>
+        <%= form_with model: @comm do |f| %>
+            <%= f.text_field :post_id, value: @post.id, class: 'hidden' %>
+            <%= f.label :text, class: 'hidden' %>
+            <%= f.text_field :text, class: 'form-control', placeholder: 'Insert text...' %>
+            <%= f.submit 'Comment', class: 'btn btn-primary mt-2' %>
+        <% end %>
+    <% end %>
+    <ul>
+        <% @comms.each do |comm| %>
+            <li>
+                <%= render partial: 'shared/comments', locals: { comm: comm } %>
+            </li>
+        <% end %>
+    </ul>
 <% end %>

@@ -1,0 +1,10 @@
+<br/>
+<div class="card user_card">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to(comm.user.name , user_path(comm.user.id)) %></h5>
+    <p class="card-text"><%= comm.text %><br>
+    Commented by <%= link_to comm.user.name, comm.user %> <%= time_ago_in_words(comm.updated_at)%> ago.
+    </p>
+    Like_button <> Likes <> <%= link_to "Replies", "./#{comm.post.id}/#{comm.id}" %>
+  </div>
+</div>
