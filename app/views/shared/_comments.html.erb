@@ -5,6 +5,22 @@
     <p class="card-text"><%= comm.text %><br>
     Commented by <%= link_to comm.user.name, comm.user %> <%= time_ago_in_words(comm.updated_at)%> ago.
     </p>
-    Like_button <> Likes <> <%= link_to "Replies", "./#{comm.post.id}/#{comm.id}" %>
+    <%= Like.where(comm_id: comm.id).count %> <> <%= link_to "Replies", "./#{comm.post.id}/#{comm.id}" %>
+     <% if logged_in? %>
+      <%= button_to "Like", {:controller => :comms, :action => 'toggle_like_c', :id => comm.id }, :method => :update, :class => "btn like_button #{if(Like.where(user_id: current_user.id, comm_id: comm.id).count == 1)
+              "btn_like_red"     
+          else
+              "btn-secondary"
+          end}" 
+      %>
+      <% end %>
   </div>
 </div>
+
+
+<%# @likes.where(post_id: post.id).count %> <%# link_to "Comments", "/posts/#{post.id}" %>
+      <%# button_to "Like", {:controller => :posts, :action => 'toggle_like', :id => post.id }, :method => :update, :class => "btn like_button #{if(@likes.where(user_id: current_user.id, post_id: post.id).count == 1)
+            "btn-primary"    
+        else
+            "btn-secondary"
+        end}" %>

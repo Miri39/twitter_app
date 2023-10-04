@@ -4,7 +4,15 @@
     <p class="card-text">description: <%= post.description%><br>
     Posted by <%= link_to post.user.name, post.user %> <%= time_ago_in_words(post.updated_at)%> ago.
     </p>
+      <%= @likes.where(post_id: post.id).count %> <> <%= link_to "Comments", "/posts/#{post.id}" %>
+      <% if logged_in? %>
+        <%= button_to "Like", {:controller => :posts, :action => 'toggle_like_p', :id => post.id }, :method => :update, :class => "btn like_button #{if(@likes.where(user_id: current_user.id, post_id: post.id).count == 1)
+              "btn_like_red"    
+          else
+              "btn-secondary"
+          end}" %>
+        <% end %>
+        <br/>
     <%= link_to 'Edit', edit_post_path(post) %>
   </div>
 </div>
-

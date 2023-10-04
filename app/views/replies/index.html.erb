@@ -2,7 +2,7 @@
 
 <% if logged_in? %>
     <%= form_with model: @reply do |f| %>
-        <%= f.label :text %>
+        <%= f.label :text , class: 'hidden' %>
         <%= f.text_field :text, class: 'form-control', placeholder: 'Reply...' %>
         <%= f.submit 'Reply', class: 'btn btn-primary mt-2' %>
     <% end %> 

@@ -16,13 +16,20 @@ Rails.application.routes.draw do
   resources :posts
   resources :comms 
   resources :replies
+  resources :relationships, only: [:create, :destroy]
   post 'posts/:id/comm', to: 'comms#create'
   get 'posts/:id/:comm_id', to: 'replies#index'
   post 'posts/:id/:comm_id', to: 'replies#create'
+
+  post 'users/:id', to: 'users#show'
+
+  post 'toggle_like_p/:id', to: 'posts#toggle_like_p'
+  post 'toggle_like_c/:id', to: 'comms#toggle_like_c'
+  post 'toggle_like_r/:id', to: 'replies#toggle_like_r'
   # get 'sign_up', to: 'users#new'
   # get 'users', to: 'users#index'
   # get 'users/new', to: 'users#new'
-  # get 'users/:id', to: 'users#show'
+  # get 'users/:id', to: 'users#show'WSW
   # post 'users', to:'users#create'
   # delete 'users/:id', to: 'users#destroy'
   get 'admin/statistics', to: 'admin#index' 

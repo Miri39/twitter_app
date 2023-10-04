@@ -26,6 +26,7 @@
 
 <% if @user.present? %>
     <div class= "col-md-6">
+      <%= render 'follow_form' if logged_in? %>
       <h3>Posts (<%= @posts.count %>)</h3>
       <%= render 'shared/paginated_posts'%>
     </div>

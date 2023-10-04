@@ -5,5 +5,5 @@ class Comm < ApplicationRecord
     validates :text, presence: true, length: {maximum: 120}
 
     has_many :replies, dependent: :destroy
-
+    has_many :likes, dependent: :destroy
 end

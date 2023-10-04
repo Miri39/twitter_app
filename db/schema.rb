@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_29_143442) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_02_170629) do
   create_table "comms", force: :cascade do |t|
     t.string "text"
     t.integer "post_id", null: false
@@ -19,6 +19,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_143442) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comms_on_post_id"
     t.index ["user_id"], name: "index_comms_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id"
+    t.integer "comm_id"
+    t.integer "reply_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comm_id"], name: "index_likes_on_comm_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["reply_id"], name: "index_likes_on_reply_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -62,6 +75,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_143442) do
 
   add_foreign_key "comms", "posts"
   add_foreign_key "comms", "users"
+  add_foreign_key "likes", "comms"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "replies"
+  add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "replies", "comms"
   add_foreign_key "replies", "users"

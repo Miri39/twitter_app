@@ -6,6 +6,14 @@
     <%= reply.text %><br>
     Replied by <%= link_to reply.user.name, reply.user %> <%= time_ago_in_words(reply.updated_at)%> ago.
     </p>
-    Like_button <> Likes
+      <% if logged_in? %>
+        <%= button_to "Like", {:controller => :replies, :action => 'toggle_like_r', :id => reply.id}, :method => :update, :class => "btn like_button #{if(Like.where(user_id: current_user.id, reply_id: reply.id).count == 1)
+                "btn_like_red"     
+            else
+                "btn-secondary"
+            end}" %> <> <%= @likes.where(reply_id: reply.id).count%>
+      <% end %>
   </div>
 </div>
+
+ 

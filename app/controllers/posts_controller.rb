@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :check_user, only: [ :create, :edit, :update ]
-
+  before_action :count_like
 
     def index
         @posts = Post.all
@@ -33,6 +33,19 @@ class PostsController < ApplicationController
       end
     end
     
+    def toggle_like_p
+      @post = Post.find(params[:id])
+      like = @likes.where(user_id: current_user.id, post_id: @post.id)
+      if like.count == 1
+        dislike = Like.find(like.first.id)
+        dislike.destroy
+        redirect_to request.original_url
+      else
+        Like.new(user_id: current_user.id, post_id: @post.id).save
+        redirect_to request.original_url
+      end   
+    end
+
     def edit
       if logged_in? &&  Post.find(params[:id]).user_id == current_user.id
         @post = Post.find(params[:id])
@@ -55,7 +68,9 @@ class PostsController < ApplicationController
     end
 
     private 
-    
+    def count_like
+      @likes = Like.where.not(post_id: nil)
+    end
     def post_params
       params.require(:post).permit(:title, :description)
     end

@@ -11,6 +11,9 @@ include SessionsHelper
         end
     end
 
+    def count_like
+        @likes = Like.all
+    end
 
     def check_user
         if !logged_in?
@@ -19,5 +22,5 @@ include SessionsHelper
     end
     def admin_user
         redirect_to(root_url) unless current_user.admin?
-      end
+    end
 end

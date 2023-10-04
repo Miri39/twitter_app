@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     end
 
     def show
+      @likes = Like.all
       @user = User.where(id: params[:id]).first
       if @user.present?
         @posts = @user.posts.paginate(page: params[:page], per_page: 5)
